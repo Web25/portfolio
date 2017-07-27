@@ -1,0 +1,105 @@
+doctype html
+html(lang=lang)
+    title=name
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel="stylesheet")
+    style.
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    body.w3-light-grey
+        // Page Container
+        .w3-content.w3-margin-top(style='max-width:1400px;')
+            // The Grid
+            .w3-row-padding
+                // Left Column
+                .w3-third
+                    .w3-white.w3-text-grey.w3-card-4
+                        if img
+                            .w3-display-container
+                                img(src=img, style='width:100%', alt='Avatar')
+                                .w3-display-bottomleft.w3-container.w3-text-black
+                                    h2= name
+                        .w3-container
+                            if !img
+                                h2= name
+                            p
+                                span(style='vertical-align:baseline')
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) work
+                                    | #{occupation}
+                            p
+                                i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) location_on
+                                | #{location.city}, #{location.country}
+                            p
+                                i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) mail
+                                | #{email}
+                            hr
+                            p.w3-large
+                                b
+                                    i.w3-margin-right.material-icons(class='w3-text-' + color) star
+                                    | Skills
+                                each skill in skills
+                                    p= skill.name
+                                    .w3-light-grey.w3-round-xlarge.w3-small
+                                        .w3-container.w3-center.w3-round-xlarge(style='width:' + skill.level + '%;height:18px;', class='w3-' + color)
+                            br
+                            p.w3-large.w3-text-theme
+                                b
+                                    i.w3-margin-right.material-icons(class='w3-text-' + color) language
+                                    | Languages
+                                each lang in languages
+                                    p= lang.name
+                                    .w3-light-grey.w3-round-xlarge
+                                        .w3-round-xlarge(style='height:24px;width:' + lang.level + '%', class='w3-' + color)
+                            br
+                    br
+                    // End Left Column
+                // Right Column
+                .w3-twothird
+                    .w3-container.w3-card-2.w3-white.w3-margin-bottom
+                        h2.w3-text-grey.w3-padding-16
+                            i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) work
+                            | Work Experience
+                        each exp, index in workExperience
+                            .w3-container
+                                h5.w3-opacity
+                                    b
+                                        | #{exp.title}
+                                        if exp.employer
+                                            |  / #{exp.employer}
+                                h6(class='w3-text-' + color)
+                                    i.w3-margin-right.material-icons date_range
+                                    | #{exp.from}
+                                    if exp.current
+                                        |  -&nbsp;
+                                        span.w3-tag.w3-round.w3-text-white(class='w3-' + color) Current
+                                    else if exp.to
+                                        |  - #{exp.to}
+                                p
+                                    | #{exp.description}
+                                if index < workExperience.length - 1
+                                    hr
+                    .w3-container.w3-card-2.w3-white
+                        h2.w3-text-grey.w3-padding-16
+                            i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) school
+                            | Education
+                        each edu, index in education
+                            .w3-container
+                                h5.w3-opacity
+                                    b= edu.name
+                                h6(class='w3-text-' + color)
+                                    i.w3-margin-right.material-icons date_range
+                                    | #{edu.from}
+                                    if edu.to
+                                        |  - #{edu.to}
+                                p= edu.degree
+                                if index < education.length - 1
+                                    hr
+                    // End Right Column
+                // End Grid
+            // End Page Container
+        //footer.w3-container.w3-center.w3-margin-top(class='w3-' + color)
+            p
+                | Powered by&nbsp;
+                a(href='https://www.w3schools.com/w3css/default.asp', target='_blank') w3.css

@@ -1,0 +1,51 @@
+{
+  "lang":"en",
+  "color":"blue-gray",
+  "name": "Felix Resch",
+  "email": "felix.resch@web25.org",
+  "img":"../avatar_hat.jpg",
+  "location": {
+    "city": "Vienna",
+    "country": "AT"
+  },
+  "occupation":"Programmer",
+  "skills": [
+    {
+      "name": "Programming",
+      "level": 85
+    }
+  ],
+  "languages": [
+    {
+      "name":"German",
+      "level": 100
+    },
+    {
+      "name":"English",
+      "level":75
+    }
+  ],
+  "workExperience": [
+    {
+      "title":"Freelancer",
+      "from":"July 2016",
+      "current":true,
+      "description":"Some small web pages for sport clubs and an author"
+    },
+    {
+      "title":"Internship",
+      "employer":"Siemens AG Österreich",
+      "from":"July 2015",
+      "to":"August 2015",
+      "description":"Simple management programs for train computers"
+    }
+  ],
+  "education":[
+    {
+      "name":"HTL Spengergasse",
+      "from":2011,
+      "to":2016,
+      "degree":"Matura ( ~ Austrian A-Levels)"
+    }
+  ]
+}
