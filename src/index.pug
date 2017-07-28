@@ -8,6 +8,10 @@ html(lang=lang)
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel="stylesheet")
     style.
         html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+        .line-with-icon { display: inline-flex; vertical-align: middle; align-items: center; }
+        a { text-decoration: none; }
+        a:hover { color: #2196F3; }
+
     body.w3-light-grey
         // Page Container
         .w3-content.w3-margin-top(style='max-width:1400px;')
@@ -25,20 +29,23 @@ html(lang=lang)
                             if !img
                                 h2= name
                             p
-                                span(style='vertical-align:baseline')
+                                span.line-with-icon
                                     i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) work
                                     | #{occupation}
                             p
-                                i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) location_on
-                                | #{location.city}, #{location.country}
+                                span.line-with-icon
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) location_on
+                                    | #{location.city}, #{location.country}
                             p
-                                i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) mail
-                                | #{email}
+                                span.line-with-icon
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) mail
+                                    a(href='mailto:' + email)= email
                             hr
                             p.w3-large
                                 b
-                                    i.w3-margin-right.material-icons(class='w3-text-' + color) star
-                                    | Skills
+                                    span.line-with-icon
+                                        i.w3-margin-right.material-icons(class='w3-text-' + color) star
+                                        | Skills
                                 each skill in skills
                                     p= skill.name
                                     .w3-light-grey.w3-round-xlarge.w3-small
@@ -46,12 +53,13 @@ html(lang=lang)
                             br
                             p.w3-large.w3-text-theme
                                 b
-                                    i.w3-margin-right.material-icons(class='w3-text-' + color) language
-                                    | Languages
+                                    span.line-with-icon
+                                        i.w3-margin-right.material-icons(class='w3-text-' + color) language
+                                        | Languages
                                 each lang in languages
                                     p= lang.name
                                     .w3-light-grey.w3-round-xlarge
-                                        .w3-round-xlarge(style='height:24px;width:' + lang.level + '%', class='w3-' + color)
+                                        .w3-round-xlarge(style='height:18px;width:' + lang.level + '%', class='w3-' + color)
                             br
                     br
                     // End Left Column
@@ -59,8 +67,9 @@ html(lang=lang)
                 .w3-twothird
                     .w3-container.w3-card-2.w3-white.w3-margin-bottom
                         h2.w3-text-grey.w3-padding-16
-                            i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) work
-                            | Work Experience
+                            span.line-with-icon
+                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) work
+                                | Work Experience
                         each exp, index in workExperience
                             .w3-container
                                 h5.w3-opacity
@@ -69,21 +78,23 @@ html(lang=lang)
                                         if exp.employer
                                             |  / #{exp.employer}
                                 h6(class='w3-text-' + color)
-                                    i.w3-margin-right.material-icons date_range
-                                    | #{exp.from}
-                                    if exp.current
-                                        |  -&nbsp;
-                                        span.w3-tag.w3-round.w3-text-white(class='w3-' + color) Current
-                                    else if exp.to
-                                        |  - #{exp.to}
+                                    span.line-with-icon
+                                        i.w3-margin-right.material-icons date_range
+                                        | #{exp.from}
+                                        if exp.current
+                                            |  -&nbsp;
+                                            span.w3-tag.w3-round.w3-text-white(class='w3-' + color) Current
+                                        else if exp.to
+                                            |  - #{exp.to}
                                 p
                                     | #{exp.description}
                                 if index < workExperience.length - 1
                                     hr
-                    .w3-container.w3-card-2.w3-white
+                    .w3-container.w3-card-2.w3-white.w3-margin-bottom
                         h2.w3-text-grey.w3-padding-16
-                            i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) school
-                            | Education
+                            span.line-with-icon
+                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) school
+                                | Education
                         each edu, index in education
                             .w3-container
                                 h5.w3-opacity
@@ -93,9 +104,40 @@ html(lang=lang)
                                     | #{edu.from}
                                     if edu.to
                                         |  - #{edu.to}
-                                p= edu.degree
+                                if edu.degree
+                                    p= edu.degree
                                 if index < education.length - 1
                                     hr
+                    if projects
+                        .w3-container.w3-card-2.w3-white.w3-margin-bottom
+                            h2.w3-text-grey.w3-padding-16
+                                span.line-with-icon
+                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) library_books
+                                    | Projects
+                            each project, index in projects
+                                .w3-container
+                                    h5.w3-opacity
+                                        b= project.name
+                                    p= project.description
+                                    if project.link
+                                        p
+                                            a.line-with-icon(href=project.link, target="_blank")
+                                                i.w3-margin-right.material-icons(class='w3-text-' + color) code
+                                                | #{project.link}
+                                    if index < projects.length - 1
+                                        hr
+                    if ressources
+                        .w3-container.w3-card-2.w3-white.w3-margin-bottom
+                            h2.w3-text-grey.w3-padding-16
+                                span.line-with-icon
+                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) folder_open
+                                    | Ressources
+                            each ressource, index in ressources
+                                .w3-container
+                                    p
+                                        a.line-with-icon(href=ressource.link, target="_blank")
+                                            i.w3-margin-right.material-icons(class='w3-text-' + color) attach_file
+                                            | #{ressource.name}
                     // End Right Column
                 // End Grid
             // End Page Container

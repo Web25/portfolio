@@ -3,7 +3,6 @@
   "color":"blue-gray",
   "name": "Felix Resch",
   "email": "felix.resch@web25.org",
-  "img":"../avatar_hat.jpg",
   "location": {
     "city": "Vienna",
     "country": "AT"
@@ -11,8 +10,28 @@
   "occupation":"Programmer",
   "skills": [
     {
-      "name": "Programming",
-      "level": 85
+      "name": "Java / Kotlin - Spring, Vanilla",
+      "level": 100
+    },
+    {
+      "name":"Android",
+      "level": 90
+    },
+    {
+      "name":"Relational Databases",
+      "level":85
+    },
+    {
+      "name":"Linux",
+      "level":80
+    },
+    {
+      "name":"Node.JS",
+      "level":75
+    },
+    {
+      "name":"Cisco - CCNS",
+      "level":70
     }
   ],
   "languages": [
@@ -38,6 +57,13 @@
       "from":"July 2015",
       "to":"August 2015",
       "description":"Simple management programs for train computers"
+    },
+    {
+      "title":"Internship",
+      "employer":"Advanced Communication Concepts",
+      "from":"July 2014",
+      "to":"August 2014",
+      "description":"Programmer and System Designer for a Kiosk System"
     }
   ],
   "education":[
@@ -46,6 +72,29 @@
       "from":2011,
       "to":2016,
       "degree":"Matura ( ~ Austrian A-Levels)"
+    },
+    {
+      "name":"BG/BRG Schulschiff - Bertha von Suttner",
+      "from":2007,
+      "to":2011
+    }
+  ],
+  "projects":[
+    {
+      "name":"Web 2.5",
+      "link":"https://web25.org/",
+      "description":"New standards and extensions for a new and better web"
+    },
+    {
+      "name":"Http Server",
+      "link":"https://github.com/Web25/http",
+      "description":"A simple HTTP/2 capable HTTP Server"
+    }
+  ],
+  "ressources":[
+    {
+      "name":"TU Stuff",
+      "link":"https://felix.web25.org/tu/"
     }
   ]
 }
