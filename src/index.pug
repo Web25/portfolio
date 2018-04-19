@@ -3,7 +3,7 @@ html(lang=lang)
     title=name
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+    link(rel='stylesheet', href='css/w3.css', integrity=integrity["w3.css"], crossorigin='anonymous')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel="stylesheet")
     style.
@@ -20,57 +20,69 @@ html(lang=lang)
                 // Left Column
                 .w3-third
                     .w3-white.w3-text-grey.w3-card-4
-                        if img
+                        if data.img
                             .w3-display-container
-                                img(src=img, style='width:100%', alt='Avatar')
+                                img(src=data.img, style='width:100%', alt='Avatar')
                                 .w3-display-bottomleft.w3-container.w3-text-black
-                                    h2= name
+                                    h2= data.name
                         .w3-container
-                            if !img
-                                h2= name
+                            if !data.img
+                                h2= data.name
                             p
                                 span.line-with-icon
-                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) work
-                                    | #{occupation}
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + data.color) work
+                                    | #{data.occupation}
                             p
                                 span.line-with-icon
-                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) location_on
-                                    | #{location.city}, #{location.country}
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + data.color) location_on
+                                    | #{data.location.city}, #{data.location.country}
                             p
                                 span.line-with-icon
-                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + color) mail
-                                    a(href='mailto:' + email)= email
+                                    i.w3-margin-right.w3-large.material-icons(class='w3-text-' + data.color) mail
+                                    a(href='mailto:' + data.email)= data.email
                             hr
                             p.w3-large
                                 b
                                     span.line-with-icon
-                                        i.w3-margin-right.material-icons(class='w3-text-' + color) star
+                                        i.w3-margin-right.material-icons(class='w3-text-' + data.color) star
                                         | Skills
-                                each skill in skills
+                                each skill in data.skills
                                     p= skill.name
                                     .w3-light-grey.w3-round-xlarge.w3-small
-                                        .w3-container.w3-center.w3-round-xlarge(style='width:' + skill.level + '%;height:18px;', class='w3-' + color)
+                                        .w3-container.w3-center.w3-round-xlarge(style='width:' + skill.level + '%;height:18px;', class='w3-' + data.color)
                             br
                             p.w3-large.w3-text-theme
                                 b
                                     span.line-with-icon
-                                        i.w3-margin-right.material-icons(class='w3-text-' + color) language
+                                        i.w3-margin-right.material-icons(class='w3-text-' + data.color) language
                                         | Languages
-                                each lang in languages
+                                each lang in data.languages
                                     p= lang.name
                                     .w3-light-grey.w3-round-xlarge
-                                        .w3-round-xlarge(style='height:18px;width:' + lang.level + '%', class='w3-' + color)
+                                        .w3-round-xlarge(style='height:18px;width:' + lang.level + '%', class='w3-' + data.color)
                             br
                     br
+                    if data.ressources
+                        .w3-container.w3-card-2.w3-white.w3-margin-bottom
+                            h2.w3-text-grey.w3-padding-16
+                                span.line-with-icon
+                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + data.color) folder_open
+                                    | Ressources
+                            each ressource, index in data.ressources
+                                .w3-container
+                                    p
+                                        a.line-with-icon(href=ressource.link, target="_blank")
+                                            i.w3-margin-right.material-icons(class='w3-text-' + data.color) attach_file
+                                            | #{ressource.name}
                     // End Left Column
                 // Right Column
                 .w3-twothird
                     .w3-container.w3-card-2.w3-white.w3-margin-bottom
                         h2.w3-text-grey.w3-padding-16
                             span.line-with-icon
-                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) work
+                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + data.color) work
                                 | Work Experience
-                        each exp, index in workExperience
+                        each exp, index in data.workExperience
                             .w3-container
                                 h5.w3-opacity
                                     b
@@ -83,38 +95,38 @@ html(lang=lang)
                                         | #{exp.from}
                                         if exp.current
                                             |  -&nbsp;
-                                            span.w3-tag.w3-round.w3-text-white(class='w3-' + color) Current
+                                            span.w3-tag.w3-round.w3-text-white(class='w3-' + data.color) Current
                                         else if exp.to
                                             |  - #{exp.to}
                                 p
                                     | #{exp.description}
-                                if index < workExperience.length - 1
+                                if index < data.workExperience.length - 1
                                     hr
                     .w3-container.w3-card-2.w3-white.w3-margin-bottom
                         h2.w3-text-grey.w3-padding-16
                             span.line-with-icon
-                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) school
+                                i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + data.color) school
                                 | Education
-                        each edu, index in education
+                        each edu, index in data.education
                             .w3-container
                                 h5.w3-opacity
                                     b= edu.name
-                                h6(class='w3-text-' + color)
+                                h6(class='w3-text-' + data.color)
                                     i.w3-margin-right.material-icons date_range
                                     | #{edu.from}
                                     if edu.to
                                         |  - #{edu.to}
                                 if edu.degree
                                     p= edu.degree
-                                if index < education.length - 1
+                                if index < data.education.length - 1
                                     hr
-                    if projects
+                    if data.projects
                         .w3-container.w3-card-2.w3-white.w3-margin-bottom
                             h2.w3-text-grey.w3-padding-16
                                 span.line-with-icon
-                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) library_books
+                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + data.color) library_books
                                     | Projects
-                            each project, index in projects
+                            each project, index in data.projects
                                 .w3-container
                                     h5.w3-opacity
                                         b= project.name
@@ -122,22 +134,10 @@ html(lang=lang)
                                     if project.link
                                         p
                                             a.line-with-icon(href=project.link, target="_blank")
-                                                i.w3-margin-right.material-icons(class='w3-text-' + color) code
+                                                i.w3-margin-right.material-icons(class='w3-text-' + data.color) code
                                                 | #{project.link}
-                                    if index < projects.length - 1
+                                    if index < data.projects.length - 1
                                         hr
-                    if ressources
-                        .w3-container.w3-card-2.w3-white.w3-margin-bottom
-                            h2.w3-text-grey.w3-padding-16
-                                span.line-with-icon
-                                    i.w3-margin-right.w3-xxlarge.material-icons(class='w3-text-' + color) folder_open
-                                    | Ressources
-                            each ressource, index in ressources
-                                .w3-container
-                                    p
-                                        a.line-with-icon(href=ressource.link, target="_blank")
-                                            i.w3-margin-right.material-icons(class='w3-text-' + color) attach_file
-                                            | #{ressource.name}
                     // End Right Column
                 // End Grid
             // End Page Container

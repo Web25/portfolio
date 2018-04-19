@@ -1,6 +1,6 @@
 {
   "lang":"en",
-  "color":"blue-gray",
+  "color":"blue-grey",
   "name": "Felix Resch",
   "email": "felix.resch@web25.org",
   "location": {
@@ -71,7 +71,7 @@
       "name":"HTL Spengergasse",
       "from":2011,
       "to":2016,
-      "degree":"Matura ( ~ Austrian A-Levels)"
+      "degree":"Matura ( ~ Austrian A-Levels) with Distinction"
     },
     {
       "name":"BG/BRG Schulschiff - Bertha von Suttner",
@@ -94,7 +94,7 @@
   "ressources":[
     {
       "name":"TU Stuff",
-      "link":"https://felix.web25.org/tu/"
+      "link":"https://felix.web25.org/tu/list/"
     }
   ]
 }

@@ -103,3 +103,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 /dist/
+/build/

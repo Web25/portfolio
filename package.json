@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-download": "0.0.1",
+    "gulp-hash": "^4.2.2",
+    "gulp-json-hash-manifest": "https://github.com/FelixResch/gulp-json-hash-manifest.git",
     "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2"
   }
